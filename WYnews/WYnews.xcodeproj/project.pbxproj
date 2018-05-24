@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42E89093C7725B469E1468AA /* Pods_WYnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4700FDE778E3C8C737A71 /* Pods_WYnews.framework */; };
 		F44E3A4F20B6A3F300C1F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E3A4E20B6A3F300C1F132 /* AppDelegate.swift */; };
 		F44E3A5120B6A3F300C1F132 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E3A5020B6A3F300C1F132 /* ViewController.swift */; };
 		F44E3A5420B6A3F300C1F132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44E3A5220B6A3F300C1F132 /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A5B4700FDE778E3C8C737A71 /* Pods_WYnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WYnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA536B8A29FFD29BE271AE7 /* Pods-WYnews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYnews.release.xcconfig"; path = "Pods/Target Support Files/Pods-WYnews/Pods-WYnews.release.xcconfig"; sourceTree = "<group>"; };
+		E8C9774C5BF97DD7987A2AC2 /* Pods-WYnews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYnews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WYnews/Pods-WYnews.debug.xcconfig"; sourceTree = "<group>"; };
 		F44E3A4B20B6A3F300C1F132 /* WYnews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYnews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44E3A4E20B6A3F300C1F132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44E3A5020B6A3F300C1F132 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42E89093C7725B469E1468AA /* Pods_WYnews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		346A4EACB538D35611848BC2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9774C5BF97DD7987A2AC2 /* Pods-WYnews.debug.xcconfig */,
+				CFA536B8A29FFD29BE271AE7 /* Pods-WYnews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3B1C4AE0A72E0FE2240EA155 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5B4700FDE778E3C8C737A71 /* Pods_WYnews.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F44E3A4220B6A3F300C1F132 = {
 			isa = PBXGroup;
 			children = (
 				F44E3A4D20B6A3F300C1F132 /* WYnews */,
 				F44E3A4C20B6A3F300C1F132 /* Products */,
+				346A4EACB538D35611848BC2 /* Pods */,
+				3B1C4AE0A72E0FE2240EA155 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F44E3A5D20B6A3F300C1F132 /* Build configuration list for PBXNativeTarget "WYnews" */;
 			buildPhases = (
+				AF9E27F00BE0541212538434 /* [CP] Check Pods Manifest.lock */,
 				F44E3A4720B6A3F300C1F132 /* Sources */,
 				F44E3A4820B6A3F300C1F132 /* Frameworks */,
 				F44E3A4920B6A3F300C1F132 /* Resources */,
+				B1CEE7791852C3482736692B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +156,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AF9E27F00BE0541212538434 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WYnews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1CEE7791852C3482736692B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WYnews/Pods-WYnews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WYnews/Pods-WYnews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F44E3A4720B6A3F300C1F132 /* Sources */ = {
@@ -272,6 +337,7 @@
 		};
 		F44E3A5E20B6A3F300C1F132 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8C9774C5BF97DD7987A2AC2 /* Pods-WYnews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -290,6 +356,7 @@
 		};
 		F44E3A5F20B6A3F300C1F132 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFA536B8A29FFD29BE271AE7 /* Pods-WYnews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
