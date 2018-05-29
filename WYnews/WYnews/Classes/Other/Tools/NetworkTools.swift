@@ -15,25 +15,28 @@ enum MethodType {
 }
 
 class NetworkTools {
-    
-    
-    class func requestData(URLStr : String ,type : MethodType , parameters : [String : Any]?  = nil , finishedCallback : @escaping (_ result : Any) -> ()){
+    // class方法 --> OC +开头
+    class func requestData(URLString : String, type : MethodType, parameters : [String : Any]? = nil, finishedCallback : @escaping (_ result : Any) -> ()) {
         
-        let method = type == .get ?HTTPMethod.get :HTTPMethod.post
+        let method = type == .get ? HTTPMethod.get : HTTPMethod.post
         
-        Alamofire.request(URLStr, method: method, parameters:parameters ).responseJSON { (response) in
-            
+        Alamofire.request(URLString, method: method, parameters: parameters).responseJSON { (response) in
             // 1.校验是否有结果
-            guard let Result = response.result.value else{
-                // 有错误
+            /*
+            if let result = response.result.value {
+                finishedCallback(result)
+            } else  {
+                print(response.result.error)
+            }
+            */
+            // 1.校验是否有结果
+            guard let result = response.result.value else {
                 print(response.result.error as Any)
                 return
             }
-            // 2.返回结果
-            finishedCallback(Result)
+            
+            // 2.将结果回调出去
+            finishedCallback(result)
         }
-    
-        
     }
-    
 }

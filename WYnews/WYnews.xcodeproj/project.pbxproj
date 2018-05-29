@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		42E89093C7725B469E1468AA /* Pods_WYnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B4700FDE778E3C8C737A71 /* Pods_WYnews.framework */; };
 		F44E3A4F20B6A3F300C1F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E3A4E20B6A3F300C1F132 /* AppDelegate.swift */; };
 		F44E3A5420B6A3F300C1F132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44E3A5220B6A3F300C1F132 /* Main.storyboard */; };
 		F44E3A5620B6A3F300C1F132 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44E3A5520B6A3F300C1F132 /* Assets.xcassets */; };
 		F44E3A5920B6A3F300C1F132 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44E3A5720B6A3F300C1F132 /* LaunchScreen.storyboard */; };
-		F44E3A6920B6BA0200C1F132 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E3A6420B6BA0200C1F132 /* HomeViewController.swift */; };
-		F44E3A6B20B6BA6D00C1F132 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E3A6A20B6BA6D00C1F132 /* NetworkTools.swift */; };
+		F47FDAB720B7FC7200E83115 /* Pods_WYnews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F47FDAB820B7FC7200E83115 /* Pods_WYnews.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		F4BF4A1220B7A7D200FC0220 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF4A1120B7A7D200FC0220 /* NewsModel.swift */; };
+		F4BF4A1520B7A82F00FC0220 /* NewsViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BF4A1320B7A82E00FC0220 /* NewsViewCell.xib */; };
+		F4BF4A1620B7A82F00FC0220 /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF4A1420B7A82E00FC0220 /* NewsViewCell.swift */; };
+		F4BF4A1820B7A86000FC0220 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF4A1720B7A86000FC0220 /* HomeViewController.swift */; };
+		F4BF4A1A20B7A92F00FC0220 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BF4A1920B7A92E00FC0220 /* NetworkTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +29,17 @@
 		F44E3A5520B6A3F300C1F132 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F44E3A5820B6A3F300C1F132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F44E3A5A20B6A3F300C1F132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F44E3A6420B6BA0200C1F132 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		F44E3A6A20B6BA6D00C1F132 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		F47FDAAE20B7F7DC00E83115 /* Pods_WYnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WYnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47FDAB020B7F8A400E83115 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47FDAB220B7FC3D00E83115 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47FDAB420B7FC4200E83115 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47FDAB620B7FC4700E83115 /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F47FDAB820B7FC7200E83115 /* Pods_WYnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_WYnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BF4A1120B7A7D200FC0220 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		F4BF4A1320B7A82E00FC0220 /* NewsViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsViewCell.xib; sourceTree = "<group>"; };
+		F4BF4A1420B7A82E00FC0220 /* NewsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
+		F4BF4A1720B7A86000FC0220 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		F4BF4A1920B7A92E00FC0220 /* NetworkTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42E89093C7725B469E1468AA /* Pods_WYnews.framework in Frameworks */,
+				F47FDAB720B7FC7200E83115 /* Pods_WYnews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +66,12 @@
 		3B1C4AE0A72E0FE2240EA155 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F47FDAB820B7FC7200E83115 /* Pods_WYnews.framework */,
+				F47FDAB620B7FC4700E83115 /* HandyJSON.framework */,
+				F47FDAB420B7FC4200E83115 /* Kingfisher.framework */,
+				F47FDAB220B7FC3D00E83115 /* Alamofire.framework */,
+				F47FDAB020B7F8A400E83115 /* Alamofire.framework */,
+				F47FDAAE20B7F7DC00E83115 /* Pods_WYnews.framework */,
 				A5B4700FDE778E3C8C737A71 /* Pods_WYnews.framework */,
 			);
 			name = Frameworks;
@@ -104,7 +122,7 @@
 		F44E3A6320B6BA0200C1F132 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F44E3A6420B6BA0200C1F132 /* HomeViewController.swift */,
+				F4BF4A1720B7A86000FC0220 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,6 +130,7 @@
 		F44E3A6520B6BA0200C1F132 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F4BF4A1120B7A7D200FC0220 /* NewsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,7 +146,7 @@
 		F44E3A6720B6BA0200C1F132 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				F44E3A6A20B6BA6D00C1F132 /* NetworkTools.swift */,
+				F4BF4A1920B7A92E00FC0220 /* NetworkTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -135,6 +154,8 @@
 		F44E3A6820B6BA0200C1F132 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F4BF4A1420B7A82E00FC0220 /* NewsViewCell.swift */,
+				F4BF4A1320B7A82E00FC0220 /* NewsViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,7 +171,7 @@
 				F44E3A4720B6A3F300C1F132 /* Sources */,
 				F44E3A4820B6A3F300C1F132 /* Frameworks */,
 				F44E3A4920B6A3F300C1F132 /* Resources */,
-				B1CEE7791852C3482736692B /* [CP] Embed Pods Frameworks */,
+				B761A7ABAECDD8F792CB3D05 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44E3A5920B6A3F300C1F132 /* LaunchScreen.storyboard in Resources */,
+				F4BF4A1520B7A82F00FC0220 /* NewsViewCell.xib in Resources */,
 				F44E3A5620B6A3F300C1F132 /* Assets.xcassets in Resources */,
 				F44E3A5420B6A3F300C1F132 /* Main.storyboard in Resources */,
 			);
@@ -227,7 +249,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B1CEE7791852C3482736692B /* [CP] Embed Pods Frameworks */ = {
+		B761A7ABAECDD8F792CB3D05 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,10 +257,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WYnews/Pods-WYnews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -252,9 +278,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BF4A1820B7A86000FC0220 /* HomeViewController.swift in Sources */,
 				F44E3A4F20B6A3F300C1F132 /* AppDelegate.swift in Sources */,
-				F44E3A6920B6BA0200C1F132 /* HomeViewController.swift in Sources */,
-				F44E3A6B20B6BA6D00C1F132 /* NetworkTools.swift in Sources */,
+				F4BF4A1A20B7A92F00FC0220 /* NetworkTools.swift in Sources */,
+				F4BF4A1620B7A82F00FC0220 /* NewsViewCell.swift in Sources */,
+				F4BF4A1220B7A7D200FC0220 /* NewsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +426,7 @@
 				INFOPLIST_FILE = WYnews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.www.WYnews.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -417,6 +446,7 @@
 				INFOPLIST_FILE = WYnews/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = cn.com.www.WYnews.;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
