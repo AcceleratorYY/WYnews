@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F41CFFA020BE32FC00173BE1 /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41CFF9F20BE32FC00173BE1 /* NewsViewModel.swift */; };
 		F44E3A4F20B6A3F300C1F132 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44E3A4E20B6A3F300C1F132 /* AppDelegate.swift */; };
 		F44E3A5420B6A3F300C1F132 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F44E3A5220B6A3F300C1F132 /* Main.storyboard */; };
 		F44E3A5620B6A3F300C1F132 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F44E3A5520B6A3F300C1F132 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		A5B4700FDE778E3C8C737A71 /* Pods_WYnews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WYnews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA536B8A29FFD29BE271AE7 /* Pods-WYnews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYnews.release.xcconfig"; path = "Pods/Target Support Files/Pods-WYnews/Pods-WYnews.release.xcconfig"; sourceTree = "<group>"; };
 		E8C9774C5BF97DD7987A2AC2 /* Pods-WYnews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WYnews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WYnews/Pods-WYnews.debug.xcconfig"; sourceTree = "<group>"; };
+		F41CFF9F20BE32FC00173BE1 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		F44E3A4B20B6A3F300C1F132 /* WYnews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYnews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44E3A4E20B6A3F300C1F132 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F44E3A5320B6A3F300C1F132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +79,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F41CFF9E20BE32DA00173BE1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F41CFF9F20BE32FC00173BE1 /* NewsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F44E3A4220B6A3F300C1F132 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		F44E3A6220B6BA0200C1F132 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F41CFF9E20BE32DA00173BE1 /* ViewModel */,
 				F44E3A6520B6BA0200C1F132 /* Model */,
 				F44E3A6820B6BA0200C1F132 /* View */,
 				F44E3A6320B6BA0200C1F132 /* Controller */,
@@ -279,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4BF4A1820B7A86000FC0220 /* HomeViewController.swift in Sources */,
+				F41CFFA020BE32FC00173BE1 /* NewsViewModel.swift in Sources */,
 				F44E3A4F20B6A3F300C1F132 /* AppDelegate.swift in Sources */,
 				F4BF4A1A20B7A92F00FC0220 /* NetworkTools.swift in Sources */,
 				F4BF4A1620B7A82F00FC0220 /* NewsViewCell.swift in Sources */,

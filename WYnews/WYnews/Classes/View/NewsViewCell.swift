@@ -17,7 +17,6 @@ class NewsViewCell: UITableViewCell {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var replyCountLabel: UILabel!
     
-    
     // MARK: 定义模型属性
     var newsModel : NewsModel? {
         // 监听属性已经发生改变: 已经改变

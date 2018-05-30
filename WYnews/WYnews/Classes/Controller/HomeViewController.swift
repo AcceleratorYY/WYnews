@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 // MARK:- 定义全局常量
 private let kHomeCellID = "kHomeCellID"
@@ -16,7 +15,8 @@ private let kHomeCellID = "kHomeCellID"
 class HomeViewController: UIViewController {
     
     // MARK: 懒加载属性
-    fileprivate lazy var newsModels : [NewsModel] = [NewsModel]()
+    lazy var newViewModel = NewsViewModel()
+    
     fileprivate lazy var tableView : UITableView = {[unowned self] in
         // 1.创建UITableView
         let tableView = UITableView()
@@ -76,27 +76,14 @@ extension HomeViewController {
 // MARK:- 网络数据的请求
 extension HomeViewController {
     fileprivate func loadData() {
-        NetworkTools.requestData(URLString: "http://c.m.163.com/nc/article/list/T1348649079062/0-100.html", type: .get) { (result : Any) in
-            
-            // 1.将Any类型转成字典类型
-            guard let resultDict = result as? [String : Any] else { return }
-            
-            // 2.根据T1348649079062的Key取出内容
-            guard let dataArray = resultDict["T1348649079062"] as? [[String : Any]] else { return }
-            
-            // 3.遍历字典,将字典转成模型对象
-            for dict in dataArray {
-                
-                self.newsModels.append(NewsModel.deserialize(from: dict)!)
-                // 4.刷新表格
-                self.tableView.reloadData()
-            }
-            
-            
-        }
+        // 请求数据
+        newViewModel.requestData({
+            // 刷新表格
+            self.tableView.reloadData()
+        })
+        
     }
 }
-
 
 // MARK:- 实现UITableView的数据源和代理方法
 // 遵守数据源协议、遵守代理协议
@@ -107,7 +94,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsModels.count
+        return newViewModel.newsModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,7 +102,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: kHomeCellID, for: indexPath) as! NewsViewCell
 
         // 2.给Cell设置数据
-        cell.newsModel = newsModels[indexPath.row]
+        cell.newsModel = newViewModel.newsModels[indexPath.row]
         cell.selectionStyle = .default
         return cell
     }
@@ -138,7 +125,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
-            newsModels .remove(at: indexPath.row)
+            newViewModel.newsModels .remove(at: indexPath.row)
             // 4.刷新表格
             self.tableView.reloadData()
             
