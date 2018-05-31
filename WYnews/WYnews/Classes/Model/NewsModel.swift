@@ -2,13 +2,14 @@
 //  NewsModel.swift
 //  WYnews
 //
-//  Created by intest_zyy on 2018/5/24.
+//  Created by coder_zyy on 2018/5/24.
 //  Copyright © 2018年 coder_zyy. All rights reserved.
 //
 
 import UIKit
 import HandyJSON
 
+// 推用荐结构体
 struct NewsModel: HandyJSON {
     // MARK: 定义属性
     var replyCount : Int = 0
@@ -27,7 +28,7 @@ struct NewsModel: HandyJSON {
 //
 //}
 
-
+// KVC
 //class NewsModel: NSObject {
 //    // MARK: 定义属性
 //    var replyCount : Int = 0

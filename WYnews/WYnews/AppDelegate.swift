@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  WYnews
 //
-//  Created by intest_zyy on 2018/5/24.
+//  Created by coder_zyy on 2018/5/24.
 //  Copyright © 2018年 coder_zyy. All rights reserved.
 //
 
@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // MARK:一次性设置状态了高亮
         application.statusBarStyle = .lightContent
         
         return true

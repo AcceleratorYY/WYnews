@@ -2,32 +2,34 @@
 //  HomeViewController.swift
 //  WYnews
 //
-//  Created by intest_zyy on 2018/5/24.
+//  Created by coder_zyy on 2018/5/24.
 //  Copyright © 2018年 coder_zyy. All rights reserved.
 //
 
 import UIKit
 
-// MARK:- 定义全局常量
 private let kHomeCellID = "kHomeCellID"
 
-// MARK:- 类的声明
 class HomeViewController: UIViewController {
+    fileprivate var dataCount: Int = 10
+    var refreshCtl:TGRefreshSwift?//高级用法时这行可以去掉
+    fileprivate var isPullUp = false
+    lazy var footIndicatorView: TGIndicatorView = {
+        let indicator = TGIndicatorView(frame:CGRect(x: 0, y: 0, width: 20, height: 20),
+                                        type:.lineScalePulseOut)
+        indicator.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        return indicator
+    }()
     
-    // MARK: 懒加载属性
     lazy var newViewModel = NewsViewModel()
     
     fileprivate lazy var tableView : UITableView = {[unowned self] in
-        // 1.创建UITableView
         let tableView = UITableView()
-        
-        // 2.设置tableView相关的属性
-        tableView.frame = self.view.bounds
+        tableView.frame = CGRect(x: 0, y: (SCREEN_HEIGHT == 812 ? 88 : 64), width: self.view.bounds.width, height: self.view.bounds.height - ((SCREEN_HEIGHT == 812 ? 88 : 64)))
         tableView.dataSource = self
         tableView.delegate = self as UITableViewDelegate
-        tableView.rowHeight = 90
-        
-        // 3.注册Cell
+//        tableView.rowHeight = 90
+//        tableView.register(NewsViewCell.self, forCellReuseIdentifier:kHomeCellID)
         tableView.register(UINib(nibName: "NewsViewCell", bundle: nil), forCellReuseIdentifier: kHomeCellID)
         
         return tableView
@@ -36,42 +38,107 @@ class HomeViewController: UIViewController {
     // MARK: 系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 1.设置导航栏
+
         setupNavigationBar()
-        
-        // 2.添加UITableView
         view.addSubview(tableView)
+        self.automaticallyAdjustsScrollViewInsets=false
+        tableView.tableFooterView = footIndicatorView
         
-        // 3.请求数据
-        loadData()
+        // 开始刷新
+        //最优推荐用法
+        builderRecommend4()
+
     }
 }
 
+extension HomeViewController {
+    
+    fileprivate func builderRecommend4(){
+        
+        self.tableView.tg_header = TGRefreshSwift.refresh(self, #selector(begainloadData)){(refresh) in
+            refresh.tg_refreshResultBgColor(UIColor.red)
+                .tg_kind(.Common)
+                .tg_tinColor(UIColor.red)
+                .tg_fadeinTime(1)
+                .tg_fadeoutTime(1)
+                .tg_verticalAlignment(.Midden)
+                .tg_indicatorRefreshingStyle(.lineCursor)
+                .tg_indicatorNormalStyle(.lineOrderbyAsc)
+                .tg_bgColor(UIColor(white:1,alpha:1))
+        }
+        self.tableView.tg_header?.beginRefreshing()
+    }
+    
+    //扩展用法
+    fileprivate func builderRecommend5(){
+        self.tableView.tg_header = TGRefreshSwift.refresh(self, #selector(loadDataSenior),44,UIImageView(image: UIImage(named: "")) ){(refresh) in
+            refresh.tg_refreshResultBgColor(UIColor.orange.withAlphaComponent(0.8))
+                .tg_verticalAlignment(.Midden)
+                .tg_tinColor(UIColor.white)
+                .tg_tipLabelFontSize(12)
+                .tg_resultLabelFontSize(13)
+                .tg_tipFailStyle(.ballScale)
+                .tg_tipOKStyle(.ballScale)
+                .tg_indicatorRefreshingStyle(.orbit)
+                .tg_fadeinTime(1)
+                .tg_fadeoutTime(0.5)
+                .tg_bgColor(UIColor(white:0.5,alpha:1))
+        }
+        self.tableView.tg_header?.beginRefreshing()
+    }
+}
 
-// MARK:- 设置UI界面
 extension HomeViewController {
     fileprivate func setupNavigationBar() {
-        // 1.设置背景图片
         navigationController?.navigationBar.setBackgroundImage(UIImage(named: "reader_navigation_background"), for: .default)
-        
-        // 2.设置标题
         navigationItem.titleView = UIImageView(image: UIImage(named: "navigation_logo"))
-        
-        // 3.设置右侧的搜索按钮
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named : "navigation_search"), style: .plain, target: self, action: #selector(searchItemClick))
     }
 }
 
-
-// MARK:- 事件监听函数
 extension HomeViewController {
-    // @objc --> 为了保留OC的特性
     @objc fileprivate func searchItemClick() {
-        print("-------")
+        print("searchItemClick")
+    }
+    
+// MARK:- 下拉刷新
+    @objc fileprivate func begainloadData() {
+        print("loadDataSenior")
+        
+        // 加载数据
+        loadData()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+
+            let isSuccess = self.newViewModel.newsModels.count % 2 == 0
+            let count = isSuccess ? 10 + 0 : 0
+            self.isPullUp ? (self.dataCount += Int(count)) : (self.dataCount = count>0 ? Int(count) : self.dataCount)
+            !self.isPullUp ? self.tableView.tg_header?.refreshResultStr = count>0 ? "成功为您推荐\(count)条新内容" : "" : ()
+            !self.isPullUp ? self.tableView.tg_header?.isSuccess = isSuccess : ()
+            isSuccess ? self.tableView.reloadData() : ()
+            !self.isPullUp ? self.tableView.tg_header?.endRefreshing() : ()
+            self.isPullUp ? self.footIndicatorView.stopAnimating() : ()
+            self.isPullUp = false//恢复标记
+        }
+    }
+    
+    @objc fileprivate func loadDataSenior() {
+        // 加载更多数据
+        loadMoreData()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2) {
+            let isSuccess = self.newViewModel.newsModels.count % 2 == 0
+            let count = isSuccess ? 10 + 0 : 0
+            self.isPullUp ? (self.dataCount += Int(count)) : (self.dataCount = count>0 ? Int(count) : self.dataCount)
+            !self.isPullUp ? self.tableView.tg_header?.refreshResultStr = count>0 ? "成功为您推荐\(count)条新内容" : "" : ()
+            !self.isPullUp ? self.tableView.tg_header?.isSuccess = isSuccess : ()
+            isSuccess ? self.tableView.reloadData() : ()
+            !self.isPullUp ? self.tableView.tg_header?.endRefreshing() : ()
+            self.isPullUp ? self.footIndicatorView.stopAnimating() : ()
+            self.isPullUp = false//恢复标记
+        }
+        
     }
 }
-
 
 // MARK:- 网络数据的请求
 extension HomeViewController {
@@ -80,8 +147,14 @@ extension HomeViewController {
         newViewModel.requestData({
             // 刷新表格
             self.tableView.reloadData()
+
         })
-        
+    }
+    fileprivate func loadMoreData() {
+        newViewModel.requestData({
+            self.tableView.reloadData()
+            
+        })
     }
 }
 
@@ -92,16 +165,15 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newViewModel.newsModels.count
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // 1.获取Cell
         let cell = tableView.dequeueReusableCell(withIdentifier: kHomeCellID, for: indexPath) as! NewsViewCell
-
-        // 2.给Cell设置数据
         cell.newsModel = newViewModel.newsModels[indexPath.row]
         cell.selectionStyle = .default
         return cell
@@ -110,15 +182,13 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     // 代理方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\([indexPath.row])")
-        // 取消选中
         tableView .deselectRow(at: indexPath, animated: true)
     }
     // cell 侧滑删除
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    // 删除样式
+
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete
     }
@@ -126,15 +196,28 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
             newViewModel.newsModels .remove(at: indexPath.row)
-            // 4.刷新表格
             self.tableView.reloadData()
             
         }
     }
-    // 修改编辑文字
     func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "删除"
     }
+    
+// MARK:- 上拉加载更多
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0 &&
+            scrollView.contentSize.height - self.tableView.frame.size.height - scrollView.contentOffset.y <= 0 &&
+            !isPullUp &&
+            !footIndicatorView.isAnimating{
+            footIndicatorView.color = TGRefreshSwift.randomColor()
+            footIndicatorView.type = TGIndicatorType(rawValue: Int(arc4random_uniform(UInt32(TGIndicatorType.allTypes.count - 1))) + 1)!
+            footIndicatorView.startAnimating()
+            isPullUp = true
+            loadDataSenior()
+        }
+    }
+    
     
 }
 
